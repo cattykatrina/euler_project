@@ -7,7 +7,7 @@
 #
 #* Creation Date : 11-11-2018
 #
-#* Last Modified : Friday 16 November 2018 10:03:44 PM IST
+#* Last Modified : Friday 16 November 2018 11:16:37 PM IST
 #
 #* Created By :
 
@@ -29,4 +29,3 @@ def palindrome(n):
     return i - 1
 
 
-print(palindrome(300))
