@@ -7,7 +7,7 @@
 #
 #* Creation Date : 11-11-2018
 #
-#* Last Modified : Saturday 17 November 2018 06:24:27 PM IST
+#* Last Modified : Sunday 18 November 2018 11:54:41 AM IST
 #
 #* Created By :
 
@@ -15,8 +15,10 @@
 import math
 from functools import lru_cache
 
+import factors
 from palindrome import palindrome
 
+@lru_cache(maxsize=None)
 def is_square(n):
     root = math.sqrt(n)
     if int(root+0.5) ** 2 == n:
@@ -24,6 +26,7 @@ def is_square(n):
     else:
         return False
 
+@lru_cache(maxsize=None)
 def is_cube(n):
     root = n **(1/3)
     # A little unsure about this reasoning but let's just try
@@ -32,14 +35,10 @@ def is_cube(n):
     else:
         return False
 
-def additive_factors(n):
-    for i in range(2, int(n/2)):
-        yield i, n-i
-
-@lru_cache(max=None)
+@lru_cache(maxsize=None)
 def candidate(n):
     ways = list()
-    for i,j in additive_factors(n):
+    for i,j in factors.additive_factors(n):
         if is_cube(j):
             if is_square(i):
                 ways.append((i,j))
