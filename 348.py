@@ -7,12 +7,13 @@
 #
 #* Creation Date : 11-11-2018
 #
-#* Last Modified : Friday 16 November 2018 11:21:44 PM IST
+#* Last Modified : Saturday 17 November 2018 06:24:27 PM IST
 #
 #* Created By :
 
 #_._._._._._._._._._._._._._._._._._._._._.#
 import math
+from functools import lru_cache
 
 from palindrome import palindrome
 
@@ -35,34 +36,44 @@ def additive_factors(n):
     for i in range(2, int(n/2)):
         yield i, n-i
 
+@lru_cache(max=None)
 def candidate(n):
     ways = list()
     for i,j in additive_factors(n):
-        if len(ways) > 4:
-            return False
         if is_cube(j):
             if is_square(i):
                 ways.append((i,j))
-                print(n, i,j)
         elif is_square(j):
             if is_cube(i):
                 ways.append((i,j))
-                print(n, i,j)
+        if len(ways) > 4:
+            return False
     if len(ways) == 4:
+        print(n, ways)
         return True
     return False
 
-def main():
+def search(start, end):
     res = list()
     i=1
-    while len(res) <5:
+    chosen = dict()
+    #while len(res) <5:
+    for i in range(1, 50000):
         palind = palindrome(i)
-        print(palind)
         right_no = candidate(palind)
         if right_no:
+            chosen[i] = palind
             res.append(palind)
+            print(chosen)
         i = i+1
-    print(res)
     print(sum(res))
+    return chosen
 
-main()
+def main():
+    give_up = 100000000000
+    step = 50000
+    for i in range(1, step):
+    while i < give_up:
+        res=search(i, i + step)
+    print(res)
+    main()

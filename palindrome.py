@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 # -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.#
 
-#* File Name : palindrome.py
+#* file name : palindrome.py
 #
-#* Purpose :
+#* purpose :
 #
-#* Creation Date : 11-11-2018
+#* creation date : 11-11-2018
 #
-#* Last Modified : Friday 16 November 2018 11:16:37 PM IST
+#* last modified : saturday 17 november 2018 02:01:52 pm ist
 #
-#* Created By :
+#* created by :
 
 #_._._._._._._._._._._._._._._._._._._._._.#
 from functools import lru_cache
@@ -18,7 +18,7 @@ def is_palindrome(num_str):
     reversed_str = ''.join([c for c in reversed(num_str)])
     return bool(int(num_str) == int(reversed_str))
 
-@lru_cache(maxsize=None)
+@lru_cache(maxsize=none)
 def palindrome(n):
     cnt=0
     i =10
